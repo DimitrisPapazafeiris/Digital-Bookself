@@ -9,12 +9,13 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-const connectionString = 'postgres://books_8g44_user:LzvbLmkSTBo1OvJ8gwLgaUR6fv4AFrOT@dpg-cl55ems72pts739s841g-a.frankfurt-postgres.render.com/books_8g44';
-
-const db = new Client({
-  connectionString: connectionString,
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "Books",
+  password:  process.env.DATABASE_PASSWORD,
+  port: 5432,
 });
-
 
 db.connect();
 

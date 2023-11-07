@@ -2,6 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import pg from "pg";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -10,7 +13,7 @@ const db = new pg.Client({
   user: "books_8g44_user",
   host: "dpg-cl55ems72pts739s841g-a",
   database: "books_8g44",
-  password: "LzvbLmkSTBo1OvJ8gwLgaUR6fv4AFrOT",
+  password: process.env.DATABASE_PASSWORD,
   port: 5432,
 });
 

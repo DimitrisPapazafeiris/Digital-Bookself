@@ -9,6 +9,15 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
+/*Remote Database ElephantSQL*/
+const connectionString = process.env.DATABASE_URL;
+
+const db = new pg.Client({
+  connectionString: connectionString,
+});
+
+
+/* For local database
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
@@ -16,6 +25,7 @@ const db = new pg.Client({
   password:  process.env.DATABASE_PASSWORD,
   port: 5432,
 });
+*/
 
 db.connect();
 

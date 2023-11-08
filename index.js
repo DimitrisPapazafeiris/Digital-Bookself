@@ -9,15 +9,14 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-/*Remote Database ElephantSQL*/
+/*Remote Database ElephantSQL
 const connectionString = process.env.DATABASE_URL;
 
 const db = new pg.Client({
   connectionString: connectionString,
 });
+*/
 
-
-/* For local database
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
@@ -25,7 +24,6 @@ const db = new pg.Client({
   password:  process.env.DATABASE_PASSWORD,
   port: 5432,
 });
-*/
 
 db.connect();
 
@@ -132,7 +130,6 @@ app.post("/new", async (req, res) => {
 app.post("/edit", async (req, res) => {
   try {
     const bookId = req.body.book;
-    console.log(bookId);
     const bookReview = await db.query(
       "SELECT review FROM read_books WHERE read_books.id = $1;",
       [bookId]

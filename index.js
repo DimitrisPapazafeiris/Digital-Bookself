@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-Remote Database ElephantSQL
+//Remote Database ElephantSQL
 const connectionString = process.env.DATABASE_URL;
 
 const db = new pg.Client({
